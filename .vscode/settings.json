@@ -2,6 +2,14 @@
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+        "lib/**/*.jar",
+        "/Users/carmengoerrian/Documents/java-fx-sdk-21/javafx-swt.jar",
+        "/Users/carmengoerrian/Documents/java-fx-sdk-21/javafx.base.jar",
+        "/Users/carmengoerrian/Documents/java-fx-sdk-21/javafx.controls.jar",
+        "/Users/carmengoerrian/Documents/java-fx-sdk-21/javafx.fxml.jar",
+        "/Users/carmengoerrian/Documents/java-fx-sdk-21/javafx.graphics.jar",
+        "/Users/carmengoerrian/Documents/java-fx-sdk-21/javafx.media.jar",
+        "/Users/carmengoerrian/Documents/java-fx-sdk-21/javafx.swing.jar",
+        "/Users/carmengoerrian/Documents/java-fx-sdk-21/javafx.web.jar"
     ]
 }
