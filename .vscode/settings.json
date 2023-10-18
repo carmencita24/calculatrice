@@ -10,6 +10,7 @@
         "/Users/carmengoerrian/Documents/java-fx-sdk-21/javafx.graphics.jar",
         "/Users/carmengoerrian/Documents/java-fx-sdk-21/javafx.media.jar",
         "/Users/carmengoerrian/Documents/java-fx-sdk-21/javafx.swing.jar",
-        "/Users/carmengoerrian/Documents/java-fx-sdk-21/javafx.web.jar"
+        "/Users/carmengoerrian/Documents/java-fx-sdk-21/javafx.web.jar",
+        "/Users/retailleaualan/Documents/javafx-sdk-21/**/*.jar"
     ]
 }
