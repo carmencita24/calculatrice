@@ -3,8 +3,8 @@ import java.util.Stack;
 import java.lang.Object;
 
 public class CalculatorModel implements CalculatorModelInterface {
-    private Stack<Double> pile;
-    private String accumulateur;
+    private Stack<Double> pile = new Stack<Double>();
+    private String accumulateur = "";
 
     public String getAccu() {
         return accumulateur;
@@ -57,7 +57,7 @@ public class CalculatorModel implements CalculatorModelInterface {
     }
 
     public void opposite() {
-        this.pile.push(-this.pile.pop());
+        setAccu(String.valueOf(Double.valueOf(getAccu())*(-1)));
     }
 
     public void push() {

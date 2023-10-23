@@ -5,11 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "vmArgs": "--module-path /Users/carmengoerrian/Documents/java-fx-sdk-21 --add-modules javafx.controls,javafx.graphics,javafx.fxml",
+            
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "calculatrice_bf52e09c"
+        },
+        {
+            "vmArgs": "--module-path /Users/retailleaualan/Documents/javafx-sdk-21/lib --add-modules javafx.controls,javafx.graphics,javafx.fxml",
             "type": "java",
             "name": "Current File",
             "request": "launch",
-            "mainClass": "${file}" 
+            "mainClass": "${file}"
         },
         {
             "type": "java",
