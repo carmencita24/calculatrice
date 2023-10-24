@@ -20,7 +20,6 @@ public class App extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("calculatrice.fxml"));
 			Scene scene = new Scene(root, 250, 400);
-
 			primaryStage.setTitle("Calculatrice");
 			primaryStage.setScene(scene);
 			primaryStage.show();

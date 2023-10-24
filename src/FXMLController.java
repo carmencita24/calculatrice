@@ -48,29 +48,30 @@ public class FXMLController {
     @FXML
     public void clear(ActionEvent event) {
         model.clear();
+        model.setAccu("");
         historique.getChildren().clear();
     }
 
     @FXML
     public void drop(ActionEvent event) {
-        if(!model.getAccu().isEmpty()) {
-        model.setAccu(model.getAccu().substring(0, model.getAccu().length()-1));
-        
-        historique.getChildren().set(historique.getChildren().size()-1, new Label(model.getAccu()));
+        if (!model.getAccu().isEmpty()) {
+            model.setAccu(model.getAccu().substring(0, model.getAccu().length() - 1));
+
+            historique.getChildren().set(historique.getChildren().size() - 1, new Label(model.getAccu()));
         }
     }
 
     @FXML
     public void swap(ActionEvent event) {
-        model.swap();
         if (historique.getChildren().size() > 1) {
-            Label e1 = (Label)historique.getChildren().removeLast();
-            Label e2 = (Label)historique.getChildren().removeLast();
+            model.swap();
+            Label e1 = (Label) historique.getChildren().removeLast();
+            Label e2 = (Label) historique.getChildren().removeLast();
             historique.getChildren().add(e1);
             historique.getChildren().add(e2);
             model.setAccu(e2.getText());
         }
-        
+
     }
 
     @FXML
@@ -80,10 +81,11 @@ public class FXMLController {
         model.setAccu("");
         pushHistorique(model.getPile().lastElement().toString());
     }
+
     @FXML
     public void opposite(ActionEvent event) {
         model.opposite();
-        historique.getChildren().set(historique.getChildren().size()-1, new Label(model.getAccu()));
+        historique.getChildren().set(historique.getChildren().size() - 1, new Label(model.getAccu()));
     }
 
     @FXML
@@ -95,7 +97,7 @@ public class FXMLController {
     }
 
     public void pushHistorique(String value) {
-        if(historique.getChildren().size() > 0 && ((Label)historique.getChildren().getLast()).getText().equals("")) {
+        if (historique.getChildren().size() > 0 && ((Label) historique.getChildren().getLast()).getText().equals("")) {
             historique.getChildren().set(historique.getChildren().size() - 1, (new Label(value)));
         } else {
             historique.getChildren().add((Node) (new Label(value)));
