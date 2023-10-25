@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 public class FXMLController {
-    CalculatorModel model = new CalculatorModel();
+    CalculatorController calculator = new CalculatorController();
     @FXML
     VBox historique;
 
@@ -13,63 +13,79 @@ public class FXMLController {
     public void keyboardPress(ActionEvent event) {
         String id = ((Node) event.getSource()).getId();
 
-        if (model.getAccu().equals("")) {
-            model.setAccu(id.replace("button", ""));
-            pushHistorique(model.getAccu());
+        if (calculator.getModel().getAccu().equals("")) {
+            if (id.equals("buttoncomma")) {
+                calculator.change("0.");
+            } else {
+                calculator.change(id.replace("button", ""));
+                
+            }
+            pushHistorique(Double.valueOf(calculator.getModel().getAccu()));
         } else {
-            model.setAccu(model.getAccu() + id.replace("button", ""));
-            historique.getChildren().set(historique.getChildren().size() - 1, (new Label(model.getAccu())));
+            if (id.equals("buttoncomma")) {
+                if (!calculator.getModel().getAccu().contains(".")) {
+                    calculator.change(calculator.getModel().getAccu() + ".");
+                    
+                }
+            } else {
+                calculator.change(calculator.getModel().getAccu() + id.replace("button", ""));
+                
+            }
+            historique.getChildren().set(historique.getChildren().size() - 1,
+                        (new Label(calculator.getModel().getAccu())));
         }
     }
 
     @FXML
     public void push(ActionEvent event) {
-        model.push();
-        model.setAccu("");
-        pushHistorique(model.getAccu());
+        calculator.getModel().push();
+        calculator.change("");
+        pushHistorique(Double.valueOf(calculator.getModel().getAccu()));
     }
 
     @FXML
     public void add(ActionEvent event) {
         push(event);
-        model.add();
-        model.setAccu("");
-        pushHistorique(model.getPile().lastElement().toString());
+        calculator.getModel().add();
+        calculator.change("");
+        pushHistorique(calculator.getModel().getPile().lastElement());
     }
 
     @FXML
     public void divide(ActionEvent event) {
         push(event);
-        model.divide();
-        model.setAccu("");
-        pushHistorique(model.getPile().lastElement().toString());
+        calculator.getModel().divide();
+        calculator.change("");
+        pushHistorique(calculator.getModel().getPile().lastElement());
     }
 
     @FXML
     public void clear(ActionEvent event) {
-        model.clear();
-        model.setAccu("");
+        calculator.getModel().clear();
+        calculator.change("");
         historique.getChildren().clear();
     }
 
     @FXML
     public void drop(ActionEvent event) {
-        if (!model.getAccu().isEmpty()) {
-            model.setAccu(model.getAccu().substring(0, model.getAccu().length() - 1));
+        if (!calculator.getModel().getAccu().isEmpty()) {
+            calculator
+                    .change(calculator.getModel().getAccu().substring(0, calculator.getModel().getAccu().length() - 1));
 
-            historique.getChildren().set(historique.getChildren().size() - 1, new Label(model.getAccu()));
+            historique.getChildren().set(historique.getChildren().size() - 1,
+                    new Label(calculator.getModel().getAccu()));
         }
     }
 
     @FXML
     public void swap(ActionEvent event) {
         if (historique.getChildren().size() > 1) {
-            model.swap();
+            calculator.getModel().swap();
             Label e1 = (Label) historique.getChildren().removeLast();
             Label e2 = (Label) historique.getChildren().removeLast();
             historique.getChildren().add(e1);
             historique.getChildren().add(e2);
-            model.setAccu(e2.getText());
+            calculator.change(e2.getText());
         }
 
     }
@@ -77,30 +93,30 @@ public class FXMLController {
     @FXML
     public void multiply(ActionEvent event) {
         push(event);
-        model.multiply();
-        model.setAccu("");
-        pushHistorique(model.getPile().lastElement().toString());
+        calculator.getModel().multiply();
+        calculator.change("");
+        pushHistorique(calculator.getModel().getPile().lastElement());
     }
 
     @FXML
     public void opposite(ActionEvent event) {
-        model.opposite();
-        historique.getChildren().set(historique.getChildren().size() - 1, new Label(model.getAccu()));
+        calculator.getModel().opposite();
+        historique.getChildren().set(historique.getChildren().size() - 1, new Label(calculator.getModel().getAccu()));
     }
 
     @FXML
     public void substract(ActionEvent event) {
         push(event);
-        model.substract();
-        model.setAccu("");
-        pushHistorique(model.getPile().lastElement().toString());
+        calculator.getModel().substract();
+        calculator.change("");
+        pushHistorique(calculator.getModel().getPile().lastElement());
     }
 
-    public void pushHistorique(String value) {
+    public void pushHistorique(Double value) {
         if (historique.getChildren().size() > 0 && ((Label) historique.getChildren().getLast()).getText().equals("")) {
-            historique.getChildren().set(historique.getChildren().size() - 1, (new Label(value)));
+            historique.getChildren().set(historique.getChildren().size() - 1, (new Label(String.format("%.2f", value).replace(".", ","))));
         } else {
-            historique.getChildren().add((Node) (new Label(value)));
+            historique.getChildren().add((Node) (new Label(String.format("%.2f", value).replace(".", ","))));
         }
     }
 

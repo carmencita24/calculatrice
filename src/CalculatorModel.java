@@ -1,6 +1,5 @@
 
 import java.util.Stack;
-import java.lang.Object;
 
 public class CalculatorModel implements CalculatorModelInterface {
     private Stack<Double> pile = new Stack<Double>();
@@ -42,7 +41,7 @@ public class CalculatorModel implements CalculatorModelInterface {
         if (pile.size() > 1) {
             double e1 = this.pile.pop();
             double e2 = this.pile.pop();
-            this.pile.push(e2 * e1);
+            this.pile.push((e2 * e1));
         }
     }
 
