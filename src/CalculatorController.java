@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class CalculatorController implements CalculatorControlerInterface {
+public class CalculatorController implements CalculatorControllerInterface {
 	
 	CalculatorModel model = new CalculatorModel();
 	
