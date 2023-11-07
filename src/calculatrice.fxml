@@ -79,7 +79,7 @@
                               <Button fx:id="button" mnemonicParsing="false" onAction="#substract" text="-" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                               <Button fx:id="buttonmultiply" mnemonicParsing="false" onAction="#multiply" text="*" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                               <Button fx:id="buttondivide" mnemonicParsing="false" onAction="#divide" text="/" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                              <Button fx:id="buttonequal" mnemonicParsing="false" onAction="#push" text="↵" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                              <Button fx:id="buttonpush" mnemonicParsing="false" onAction="#push" text="↵" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
                               <Button fx:id="buttonplus1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#add" text="+" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                            </children>
                         </GridPane>
